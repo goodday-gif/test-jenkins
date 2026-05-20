@@ -1,0 +1,1 @@
+import{r as t}from"./request-Dz4kUDM7.js";const o=r=>t.put("/front/member/profile",r),s=r=>t.put("/front/member/password",r),a=r=>t.get("/front/member/tutorials",{params:r}),m=r=>t.get("/front/member/orders",{params:r});export{m as a,s as b,a as g,o as u};

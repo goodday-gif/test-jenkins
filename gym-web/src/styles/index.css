@@ -1,0 +1,222 @@
+/* ===== FitZone 全局样式 - 高级感深色主题 ===== */
+
+:root {
+  --bg-primary: #0a0a0a;
+  --bg-card: #1a1a2e;
+  --bg-card-alpha: rgba(26, 26, 46, 0.8);
+  --bg-elevated: #16162a;
+  --gradient-primary: linear-gradient(135deg, #00d2ff, #7b2ff7);
+  --gradient-primary-reverse: linear-gradient(135deg, #7b2ff7, #00d2ff);
+  --color-accent-cyan: #00d2ff;
+  --color-accent-purple: #7b2ff7;
+  --color-gold: #f39c12;
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0b0;
+  --text-muted: #6a6a7a;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(255, 255, 255, 0.15);
+  --border-glow: rgba(0, 210, 255, 0.3);
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 20px rgba(0, 210, 255, 0.15);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  --nav-height: 72px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+a {
+  color: var(--color-accent-cyan);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-accent-purple);
+}
+
+/* 滚动条 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* 渐变文字 */
+.gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 渐变按钮 */
+.btn-gradient {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 32px;
+  background: var(--gradient-primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-gradient:hover {
+  box-shadow: 0 0 30px rgba(0, 210, 255, 0.3), 0 0 60px rgba(123, 47, 247, 0.15);
+  transform: translateY(-1px);
+}
+
+.btn-gradient:active {
+  transform: translateY(0);
+}
+
+/* 卡片 */
+.glass-card {
+  background: var(--bg-card-alpha);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  transition: all var(--transition-normal);
+}
+
+.glass-card:hover {
+  border-color: var(--border-glow);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow);
+}
+
+/* 页面过渡 */
+.fade-slide-enter-active {
+  transition: all 0.35s ease-out;
+}
+
+.fade-slide-leave-active {
+  transition: all 0.25s ease-in;
+}
+
+.fade-slide-enter-from {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.fade-slide-leave-to {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+/* Element Plus 深色覆盖 */
+.el-message {
+  --el-message-bg-color: #1a1a2e !important;
+  --el-message-border-color: rgba(255,255,255,0.08) !important;
+  --el-message-text-color: #ffffff !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
+  background: rgba(26,26,46,0.95) !important;
+  backdrop-filter: blur(12px);
+}
+
+.el-message .el-message__content {
+  color: #ffffff !important;
+}
+
+.el-message--success .el-message__icon {
+  color: #00d2ff !important;
+}
+
+.el-message--error .el-message__icon {
+  color: #ff4757 !important;
+}
+
+.el-message--warning .el-message__icon {
+  color: var(--color-gold) !important;
+}
+
+.el-dialog {
+  background: #1a1a2e !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
+  border-radius: var(--radius-lg) !important;
+}
+
+.el-dialog__header {
+  color: #ffffff !important;
+}
+
+.el-dialog__body {
+  color: var(--text-secondary) !important;
+}
+
+.el-overlay {
+  background-color: rgba(0, 0, 0, 0.6) !important;
+  backdrop-filter: blur(4px);
+}
+
+/* 输入框深色风格 */
+.dark-input {
+  width: 100%;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 15px;
+  font-family: var(--font-family);
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+.dark-input::placeholder {
+  color: var(--text-muted);
+}
+
+.dark-input:focus {
+  border-color: var(--color-accent-cyan);
+  box-shadow: 0 0 0 3px rgba(0, 210, 255, 0.1);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* 选择隐藏 */
+::selection {
+  background: rgba(0, 210, 255, 0.3);
+  color: #fff;
+}

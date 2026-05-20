@@ -1,0 +1,1 @@
+import{r as t}from"./request-B9kY3flv.js";function e(a){return t.get("/admin/coach/list",{params:a})}function n(a){return t.post("/admin/coach",a)}function o(a){return t.put("/admin/coach",a)}function r(a){return t.delete(`/admin/coach/${a}`)}export{n as a,r as d,e as g,o as u};

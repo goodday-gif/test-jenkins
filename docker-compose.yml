@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: gym-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "123456"
+      MYSQL_DATABASE: gym_db
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./gym-server/src/main/resources/sql/init.sql:/docker-entrypoint-initdb.d/01-init.sql
+      - ./gym-server/src/main/resources/sql/review.sql:/docker-entrypoint-initdb.d/02-review.sql
+      - ./gym-server/src/main/resources/sql/review_test_data.sql:/docker-entrypoint-initdb.d/03-review-data.sql
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  gym-server:
+    build:
+      context: ./gym-server
+      dockerfile: Dockerfile
+    container_name: gym-server
+    ports:
+      - "8080:8080"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    volumes:
+      - upload-data:/app/upload
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/gym_db?useSSL=false&serverTimezone=Asia/Shanghai&characterEncoding=utf-8
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: "123456"
+      FILE_UPLOAD_PATH: /app/upload/
+
+  gym-admin:
+    build:
+      context: ./gym-admin
+      dockerfile: Dockerfile
+    container_name: gym-admin
+    ports:
+      - "5173:80"
+    depends_on:
+      - gym-server
+
+  gym-web:
+    build:
+      context: ./gym-web
+      dockerfile: Dockerfile
+    container_name: gym-web
+    ports:
+      - "5174:80"
+    depends_on:
+      - gym-server
+
+volumes:
+  mysql-data:
+  upload-data:

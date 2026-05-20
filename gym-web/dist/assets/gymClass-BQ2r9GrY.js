@@ -1,0 +1,1 @@
+import{r as e}from"./request-Dz4kUDM7.js";const r=s=>e.get("/front/class/list",{params:s}),a=s=>e.get(`/front/class/${s}`),o=s=>e.post(`/front/class/${s}/reserve`),c=s=>e.delete(`/front/class/reserve/${s}`),l=s=>e.get("/front/class/my-reserves",{params:s});export{l as a,a as b,c,r as g,o as r};

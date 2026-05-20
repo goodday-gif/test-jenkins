@@ -1,0 +1,1 @@
+import{r as e}from"./request-B9kY3flv.js";function a(){return e.get("/admin/category/list")}function n(t){return e.post("/admin/category",t)}function o(t){return e.put("/admin/category",t)}function u(t){return e.delete(`/admin/category/${t}`)}export{n as a,u as d,a as g,o as u};
